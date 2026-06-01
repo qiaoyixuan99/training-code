@@ -125,12 +125,15 @@ FADE_DURATION_MS = 1000   # fade-out takes 1 second
 FADE_STEPS = 20
 HOLD_DURATION_MS = 10000  # show result for 10 seconds
 
+TRANSPARENT_COLOR = "#010101"   # any rare colour — made fully invisible by -transparentcolor
+
 root = tk.Tk()
 root.title("Squad Distance Meter")
 root.overrideredirect(True)
 root.attributes("-topmost", True)
-root.attributes("-alpha", 0.0)          # start fully hidden
-root.configure(bg="#1a1a2e")
+root.attributes("-alpha", 0.0)                  # start fully hidden
+root.attributes("-transparentcolor", TRANSPARENT_COLOR)
+root.configure(bg=TRANSPARENT_COLOR)
 
 sw = root.winfo_screenwidth()
 root.geometry(f"{sw}x40+0+0")
@@ -140,7 +143,7 @@ label = tk.Label(
     text="",
     font=("Consolas", 14, "bold"),
     fg="#00ff88",
-    bg="#1a1a2e",
+    bg=TRANSPARENT_COLOR,          # same as window bg → invisible
     anchor="center",
 )
 label.pack(fill=tk.BOTH, expand=True)
