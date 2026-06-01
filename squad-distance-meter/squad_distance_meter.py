@@ -9,36 +9,53 @@ Hotkeys:
   r  - Reset all points
   Esc - Quit
 
-The overlay stays on top of all windows at the screen's top edge.
+Skills / Libraries used:
+  - pynput       : global keyboard & mouse listener (works even when game has focus)
+  - tkinter      : transparent always-on-top overlay for displaying the result
+  - math.hypot   : Euclidean distance between two pixel points
+  - ctypes       : Win32 API to make the overlay click-through (WS_EX_TRANSPARENT)
+  - pyinstaller  : packages the script into a single .exe
+
+Algorithm:
+  scale = 300 / pixel_distance(i1, i2)   # metres per pixel
+  real  = pixel_distance(o1, o2) * scale  # real metres
 """
 
+import ctypes
 import math
 import threading
 import tkinter as tk
 from pynput import keyboard, mouse
+
+# ── Win32 constants for click-through overlay ─────────────────────────────
+
+GWL_EXSTYLE = -20
+WS_EX_TRANSPARENT = 0x00000020
+WS_EX_LAYERED = 0x00080000
+WS_EX_TOPMOST = 0x00000008
 
 # ── shared state (written by listener thread, read by tkinter) ────────────
 
 class State:
     def __init__(self):
         self.lock = threading.Lock()
-        self.i_points = []       # [(x,y), (x,y)]
-        self.o_points = []       # [(x,y), (x,y)]
-        self.status_text = "Press 'i' twice to set 300m reference"
+        self.i_points = []  # [(x,y), (x,y)]
+        self.o_points = []  # [(x,y), (x,y)]
 
 state = State()
 mouse_ctrl = mouse.Controller()
 
 # ── geometry helpers ──────────────────────────────────────────────────────
 
-def dist(a, b):
+def pixel_dist(a, b):
+    """Euclidean distance between two (x, y) pixel coordinates."""
     return math.hypot(a[0] - b[0], a[1] - b[1])
 
 def compute_text(s: State) -> str:
     with s.lock:
         if len(s.i_points) < 2:
             return "Press 'i' twice to set 300m reference"
-        d_i = dist(s.i_points[0], s.i_points[1])
+        d_i = pixel_dist(s.i_points[0], s.i_points[1])
         if d_i == 0:
             return "i points overlap — press 'r' and try again"
         scale = 300.0 / d_i  # metres per pixel
@@ -46,7 +63,7 @@ def compute_text(s: State) -> str:
             return f"i: 300m calibrated | Press 'o' to measure"
         if len(s.o_points) == 1:
             return f"i: 300m calibrated | Press 'o' once more"
-        d_o = dist(s.o_points[0], s.o_points[1])
+        d_o = pixel_dist(s.o_points[0], s.o_points[1])
         real = d_o * scale
         return f"i: 300m calibrated | o: {real:.1f} m"
 
@@ -101,10 +118,22 @@ label = tk.Label(
 )
 label.pack(fill=tk.BOTH, expand=True)
 
+def make_click_through(widget):
+    """Make a tkinter window click-through using Win32 API."""
+    hwnd = ctypes.windll.user32.GetParent(widget.winfo_id())
+    style = ctypes.windll.user32.GetWindowLongW(hwnd, GWL_EXSTYLE)
+    ctypes.windll.user32.SetWindowLongW(
+        hwnd, GWL_EXSTYLE,
+        style | WS_EX_TRANSPARENT | WS_EX_LAYERED | WS_EX_TOPMOST
+    )
+
 def tick():
     label.config(text=compute_text(state))
     root.after(100, tick)
 
+# apply click-through after window is mapped
+root.update_idletasks()
+make_click_through(root)
 tick()
 
 # ── start keyboard listener in background thread ─────────────────────────
