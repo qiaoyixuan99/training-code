@@ -63,3 +63,20 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+
+## 5. GitHub Backup
+
+**Every new project must be backed up to GitHub.**
+
+GitHub repo: https://github.com/qiaoyixuan99/training-code
+
+When creating a new project in this workspace:
+1. Create the project folder in `f:\【99】training code\`
+2. Add all files: `git add -A`
+3. Commit: `git commit -m "Add <project-name>"`
+4. Push: `git push origin master`
+
+When making significant changes to an existing project:
+1. Stage changes: `git add -A`
+2. Commit with a descriptive message: `git commit -m "Update <project>: <what changed>"`
+3. Push: `git push origin master`
