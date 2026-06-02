@@ -524,9 +524,9 @@
   flex-shrink: 0;
 }
 
-.diff-入门 { background: #0f1a17; color: var(--xp); }
-.diff-中级 { background: #3a3510; color: var(--noon); }
-.diff-高级 { background: #3a1a1a; color: var(--streak); }
+.diff-beginner { background: #0f1a17; color: var(--xp); }
+.diff-intermediate { background: #3a3510; color: var(--noon); }
+.diff-advanced { background: #3a1a1a; color: var(--streak); }
 
 .course-desc {
   font-size: 24rpx;

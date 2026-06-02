@@ -156,7 +156,7 @@
           <view wx:for="{{item.courses}}" wx:key="name" wx:for-item="course" class="course-card" data-url="{{course.url}}" data-name="{{course.name}}" bindtap="openLink">
             <view class="course-header">
               <text class="course-name">{{course.name}}</text>
-              <text class="course-difficulty diff-{{course.difficulty}}">{{course.difficulty}}</text>
+              <text class="course-difficulty diff-{{course.difficulty}}">{{course.difficultyLabel}}</text>
             </view>
             <text class="course-desc">{{course.desc}}</text>
             <text class="course-link">🔗 点击查看课程</text>

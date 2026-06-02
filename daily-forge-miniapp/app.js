@@ -37,8 +37,8 @@ App({
     let theme;
     if (this.globalData.themeMode === 'auto') {
       // 跟随系统
-      const sysInfo = wx.getSystemInfoSync();
-      theme = sysInfo.theme || 'dark';
+      const appBaseInfo = wx.getAppBaseInfo();
+      theme = appBaseInfo.theme || 'dark';
     } else {
       theme = this.globalData.themeMode;
     }

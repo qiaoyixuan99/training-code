@@ -180,11 +180,11 @@ const TASK_RESOURCES = {
         type: 'study',
         content: 'DeepLearning.AI提供免费的LangChain/AI短课，每课1-2小时，由行业专家讲授。建议按顺序学习。',
         courses: [
-          { name: 'LangChain for LLM Application Development', desc: 'LangChain基础：链、记忆、代理', url: 'https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/', difficulty: '入门' },
-          { name: 'Building Systems with the ChatGPT API', desc: '用ChatGPT API构建完整系统', url: 'https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/', difficulty: '入门' },
-          { name: 'Building Agentic RAG with LlamaIndex', desc: '用LlamaIndex构建Agent式RAG', url: 'https://www.deeplearning.ai/short-courses/building-agentic-rag-with-llamaindex/', difficulty: '中级' },
-          { name: 'AI Agents in LangGraph', desc: '用LangGraph构建AI Agent', url: 'https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/', difficulty: '中级' },
-          { name: 'Multi AI Agent Systems with CrewAI', desc: '多Agent系统设计与实现', url: 'https://www.deeplearning.ai/short-courses/multi-ai-agent-systems-with-crewai/', difficulty: '高级' },
+          { name: 'LangChain for LLM Application Development', desc: 'LangChain基础：链、记忆、代理', url: 'https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/', difficulty: 'beginner', difficultyLabel: '入门' },
+          { name: 'Building Systems with the ChatGPT API', desc: '用ChatGPT API构建完整系统', url: 'https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/', difficulty: 'beginner', difficultyLabel: '入门' },
+          { name: 'Building Agentic RAG with LlamaIndex', desc: '用LlamaIndex构建Agent式RAG', url: 'https://www.deeplearning.ai/short-courses/building-agentic-rag-with-llamaindex/', difficulty: 'intermediate', difficultyLabel: '中级' },
+          { name: 'AI Agents in LangGraph', desc: '用LangGraph构建AI Agent', url: 'https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/', difficulty: 'intermediate', difficultyLabel: '中级' },
+          { name: 'Multi AI Agent Systems with CrewAI', desc: '多Agent系统设计与实现', url: 'https://www.deeplearning.ai/short-courses/multi-ai-agent-systems-with-crewai/', difficulty: 'advanced', difficultyLabel: '高级' },
         ],
         resources: [
           { name: '🎓 DeepLearning.AI 全部短课', url: 'https://www.deeplearning.ai/short-courses/', type: 'course' },

@@ -209,8 +209,8 @@ Page({
    */
   resolveTheme(mode) {
     if (mode === 'auto') {
-      const sysInfo = wx.getSystemInfoSync();
-      return sysInfo.theme || 'dark';
+      const appBaseInfo = wx.getAppBaseInfo();
+      return appBaseInfo.theme || 'dark';
     }
     return mode;
   },
