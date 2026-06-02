@@ -6,6 +6,13 @@ dist/
 dist-ssr/
 *.local
 
+# Python / PyInstaller
+__pycache__/
+*.pyc
+*.pyo
+build/
+*.spec
+
 # Logs
 logs
 *.log
