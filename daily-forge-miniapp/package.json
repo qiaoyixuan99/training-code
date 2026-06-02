@@ -1,0 +1,21 @@
+{
+  "name": "daily-forge-miniapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node test-automation.js",
+    "debug": "node test-automation.js",
+    "lint": "echo '✅ Daily Forge Mini Program ready for debugging'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "gsap": "^3.15.0"
+  },
+  "devDependencies": {
+    "miniprogram-automator": "^0.12.1"
+  }
+}

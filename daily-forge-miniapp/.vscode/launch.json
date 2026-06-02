@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "WeChat Mini Program",
+      "type": "wechat-miniprogram",
+      "request": "launch",
+      "projectPath": "${workspaceFolder}",
+      "cliPath": "F:\\微信web开发者工具\\cli.bat"
+    },
+    {
+      "name": "Run Automation Tests",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/test-automation.js",
+      "console": "integratedTerminal"
+    }
+  ]
+}
