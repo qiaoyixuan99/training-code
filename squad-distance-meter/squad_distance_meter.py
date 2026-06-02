@@ -4,10 +4,10 @@ Squad Distance Meter
 Background tool for measuring distances on Squad's in-game map.
 
 Hotkeys:
-  i  - Mark a reference point (press twice; the pair = 300 m)
-  o  - Mark a measurement point (press twice; distance shown)
-  r  - Reset all points
-  Esc - Quit
+  i   - Mark a reference point (press twice; the pair = 300 m)
+  o   - Mark a measurement point (press twice; distance shown)
+  r   - Reset all points
+  F1  - Quit (only way to close)
 
 Behaviour:
   - Overlay is hidden by default
@@ -77,19 +77,20 @@ def compute_text(s: State) -> str:
 # ── keyboard handler ──────────────────────────────────────────────────────
 
 def on_press(key):
+    # ── F1 is a special key (no .char), handle it first ──
+    if key == keyboard.Key.f1:
+        root.after(0, root.destroy)
+        return False  # stop listener
+
     try:
         ch = key.char
     except AttributeError:
-        if key == keyboard.Key.esc:
-            root.after(0, root.destroy)
-            return False
-        return
+        return  # ignore other special keys
 
     pos = mouse_ctrl.position
 
     with state.lock:
         if ch == 'i':
-            # show overlay on first 'i' press
             if not state.show_overlay:
                 state.show_overlay = True
                 root.after(0, show_overlay)
@@ -102,7 +103,6 @@ def on_press(key):
             if len(state.i_points) < 2:
                 return
             if state.result_ready:
-                # previous result still showing — reset o points
                 state.o_points.clear()
                 state.result_ready = False
             if len(state.o_points) >= 2:
