@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 750px; height: 1000px;
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #F1F5F9;
+    display: flex; justify-content: center; align-items: center;
+  }
+
+  .card {
+    width: 690px; height: 920px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  }
+
+  .accent-bar {
+    height: 6px;
+    background: #F59E0B;
+    flex-shrink: 0;
+  }
+
+  .header {
+    padding: 44px 48px 0;
+    text-align: center;
+  }
+
+  .icon-circle {
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    background: #FFFBEB;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 44px;
+  }
+
+  .title {
+    font-size: 36px;
+    font-weight: 900;
+    color: #0F172A;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    font-size: 19px;
+    color: #64748B;
+    font-weight: 400;
+  }
+
+  .divider {
+    width: 48px; height: 3px;
+    background: #F59E0B;
+    border-radius: 2px;
+    margin: 28px auto;
+  }
+
+  .services {
+    flex: 1;
+    padding: 0 48px;
+  }
+
+  .service-item {
+    display: flex; align-items: center;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    background: #F8FAFC;
+    border-radius: 12px;
+    border: 1px solid #F1F5F9;
+  }
+
+  .service-item .check {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: #F59E0B;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-right: 14px;
+  }
+
+  .service-item .check svg {
+    width: 12px; height: 12px;
+    stroke: white;
+    stroke-width: 3;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .service-item .text {
+    font-size: 18px;
+    color: #1E293B;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .price-section {
+    text-align: center;
+    padding: 28px 48px 20px;
+  }
+
+  .price-label {
+    font-size: 15px;
+    color: #94A3B8;
+    margin-bottom: 8px;
+  }
+
+  .price-value {
+    font-size: 56px;
+    font-weight: 900;
+    color: #F59E0B;
+    line-height: 1;
+  }
+
+  .price-value .unit {
+    font-size: 22px;
+    font-weight: 500;
+    color: #64748B;
+  }
+
+  .tags {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 48px 8px;
+  }
+
+  .tag {
+    padding: 8px 20px;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 100px;
+    color: #475569;
+    font-size: 15px;
+    font-weight: 500;
+    background: #F8FAFC;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 20px 48px 40px;
+    font-size: 15px;
+    color: #94A3B8;
+  }
+
+  .footer strong {
+    color: #F59E0B;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <div class="accent-bar"></div>
+
+  <div class="header">
+    <div class="icon-circle">📝</div>
+    <div class="title">周报 · 月报自动生成</div>
+    <div class="subtitle">填 5 分钟数据，报告图表全自动出来</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="services">
+    <div class="service-item">
+      <span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+      <span class="text">填关键数字，周报全文+图表自动生成</span>
+    </div>
+    <div class="service-item">
+      <span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+      <span class="text">趋势图、同比环比、完成率自动算好配好</span>
+    </div>
+    <div class="service-item">
+      <span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+      <span class="text">按你公司汇报格式定制，截个图就能交</span>
+    </div>
+  </div>
+
+  <div class="price-section">
+    <div class="price-label">按报告复杂程度报价</div>
+    <div class="price-value">¥50<span class="unit"> 起</span></div>
+  </div>
+
+  <div class="tags">
+    <span class="tag">按格式定制</span>
+    <span class="tag">Excel/WPS 即用</span>
+    <span class="tag">每周省一小时</span>
+  </div>
+
+  <div class="footer">
+    说说你汇报要写什么 → <strong>当天出模板，以后改个数就行</strong>
+  </div>
+
+</div>
+</body>
+</html>
